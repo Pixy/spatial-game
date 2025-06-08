@@ -1,0 +1,65 @@
+/* Side Panel Styles */
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.side-panel h3 {
+  font-family: 'Fredoka', 'Nunito', cursive;
+  font-weight: 600;
+  color: #1976d2;
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+}
+
+.rules-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #2196f3;
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.item-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  width: 120px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.item-slot.empty {
+  border-color: #e0e0e0;
+  background: rgba(245, 245, 245, 0.8);
+}
+
+.item-slot.can-drop {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.item-slot.is-over {
+  border-color: #2196f3;
+  background: rgba(33, 150, 243, 0.2);
+  transform: scale(1.05);
+}

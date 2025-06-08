@@ -1,0 +1,78 @@
+/* Game Grid Styles */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  background: #2e7d32;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.grid-cell {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: grab;
+  transition: all 0.3s ease;
+  border: 2px dashed transparent;
+  position: relative;
+}
+
+.grid-cell:active {
+  cursor: grabbing;
+}
+
+.grid-cell.can-drop {
+  border-color: #4caf50;
+  transform: scale(1.05);
+}
+
+.grid-cell.is-over {
+  border-color: #2196f3;
+  background-color: rgba(33, 150, 243, 0.2);
+  transform: scale(1.08);
+}
+
+/* Grid cell colors for different positions */
+.grid-cell.cell-0-0 { background: #ffcdd2; } /* Light pink */
+.grid-cell.cell-0-1 { background: #c8e6c9; } /* Light green */
+.grid-cell.cell-0-2 { background: #bbdefb; } /* Light blue */
+.grid-cell.cell-1-0 { background: #e1bee7; } /* Light purple */
+.grid-cell.cell-1-1 { background: #fff3e0; } /* Light orange - tree position */
+.grid-cell.cell-1-2 { background: #f8bbd9; } /* Light rose */
+.grid-cell.cell-2-0 { background: #dcedc8; } /* Light lime */
+.grid-cell.cell-2-1 { background: #d1c4e9; } /* Light lavender */
+.grid-cell.cell-2-2 { background: #ffe0b2; } /* Light peach */
+
+/* Draggable item styles */
+.draggable-item {
+  font-size: 2rem;
+  cursor: grab;
+  user-select: none;
+  transition: all 0.3s ease;
+  padding: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+}
+
+.draggable-item.is-dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.draggable-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
