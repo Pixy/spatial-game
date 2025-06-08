@@ -2,6 +2,33 @@
   text-align: center;
 }
 
+/* Police spéciale pour les titres - plus amusante pour les enfants */
+h1, h2, h3 {
+  font-family: 'Fredoka', 'Nunito', cursive;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* Style pour les boutons - police plus douce */
+button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

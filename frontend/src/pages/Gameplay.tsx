@@ -41,12 +41,33 @@ const SidePanel = styled.div`
   background: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  
+  h3 {
+    font-family: 'Fredoka', 'Nunito', cursive;
+    font-weight: 600;
+    color: #1976d2;
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+  }
+`;
+
+const InstructionText = styled.p`
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 10px 0 30px 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 `;
 
 const Title = styled.h1`
   color: #1976d2;
   margin-bottom: 20px;
   text-align: center;
+  font-family: 'Fredoka', 'Nunito', cursive;
+  font-weight: 700;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 `;
 
 const Button = styled.button`
@@ -56,17 +77,23 @@ const Button = styled.button`
   border-radius: 8px;
   padding: 12px 24px;
   font-size: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
   cursor: pointer;
   margin-top: 20px;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
   
   &:hover {
     background: #45a049;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   }
   
   &:disabled {
     background: #cccccc;
     cursor: not-allowed;
+    transform: none;
   }
 `;
 
@@ -241,7 +268,7 @@ const Gameplay: React.FC = () => {
     <DndProvider backend={HTML5Backend}>
       <Container>
         <Title>Jeu de Repérage Spatial - Niveau {level}</Title>
-        <p>Glissez l'étoile et la fée dans la grille !</p>
+        <InstructionText>Glissez l'étoile et la fée dans la grille !</InstructionText>
         
         <GameContainer>
           <SidePanel>

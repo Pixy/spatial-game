@@ -24,11 +24,23 @@ function App() {
                   backgroundColor: '#4fc3f7',
                   color: 'white',
                   border: 'none',
-                  borderRadius: '8px',
-                  padding: '12px 24px',
-                  fontSize: '16px',
+                  borderRadius: '12px',
+                  padding: '16px 32px',
+                  fontSize: '18px',
+                  fontFamily: "'Nunito', sans-serif",
+                  fontWeight: '700',
                   cursor: 'pointer',
-                  marginTop: '20px'
+                  marginTop: '20px',
+                  boxShadow: '0 4px 12px rgba(79, 195, 247, 0.3)',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 16px rgba(79, 195, 247, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(79, 195, 247, 0.3)';
                 }}
               >
                 Aller à l'accueil

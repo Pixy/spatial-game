@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +10,26 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Styles pour une meilleure apparence enfantine */
+* {
+  box-sizing: border-box;
+}
+
+body, p {
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.6;
+}
+
+/* Style pour les éléments interactifs */
+button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Animations douces pour tous les éléments */
+* {
+  transition: all 0.2s ease;
 }
