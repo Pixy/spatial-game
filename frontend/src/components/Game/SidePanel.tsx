@@ -11,6 +11,7 @@ interface GameItem {
 
 interface PlacedItem {
   id: string;
+  itemType: string; // Type of the original item
   position: { row: number; col: number };
 }
 
@@ -61,24 +62,36 @@ interface SidePanelProps {
   availableItems: GameItem[];
   placedItems: PlacedItem[];
   onItemReturn: (item: GameItem) => void;
+  isFreeMode?: boolean;
 }
 
 const SidePanel: React.FC<SidePanelProps> = ({ 
   availableItems, 
   placedItems, 
-  onItemReturn 
+  onItemReturn,
+  isFreeMode = false
 }) => {
   return (
     <div className="side-panel">
       <h3>Objets à placer</h3>
-      <div className="rules-text">
-        <strong>Règles du jeu :</strong><br />
-        • Place la fée en bas à gauche de l'arbre<br />
-        • Place l'étoile à droite de l'arbre<br />
-        • Tu peux déplacer les objets si tu changes d'avis !
-      </div>
+      {!isFreeMode && (
+        <div className="rules-text">
+          <strong>Règles du jeu :</strong><br />
+          • Place la fée en bas à gauche de l'arbre<br />
+          • Place l'étoile à droite de l'arbre<br />
+          • Tu peux déplacer les objets si tu changes d'avis !
+        </div>
+      )}
+      {isFreeMode && (
+        <div className="rules-text">
+          <strong>Mode Libre :</strong><br />
+          • Glisse les objets autant de fois que tu veux !<br />
+          • Crée ta propre composition sur la grille 5x5<br />
+          • Amusez-toi bien ! 🎨
+        </div>
+      )}
       
-      <div className="items-container">
+      <div className={`items-container ${isFreeMode ? 'free-mode' : ''}`}>
         {availableItems.map((item) => (
           <ItemSlot
             key={item.id}

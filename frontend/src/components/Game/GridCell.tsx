@@ -5,6 +5,7 @@ import { DraggableItem } from './index';
 
 interface PlacedItem {
   id: string;
+  itemType: string; // Type of the original item
   position: { row: number; col: number };
 }
 
@@ -76,8 +77,8 @@ const GridCell: React.FC<GridCellProps> = ({
       {placedItem && !fixedItem && (
         <DraggableItem
           id={placedItem.id}
-          emoji={getEmojiById(placedItem.id)}
-          name={getNameById(placedItem.id)}
+          emoji={getEmojiById(placedItem.itemType)}
+          name={getNameById(placedItem.itemType)}
           onRemove={() => onRemove(row, col)}
         />
       )}
@@ -89,7 +90,14 @@ const GridCell: React.FC<GridCellProps> = ({
 const getEmojiById = (id: string): string => {
   const items = {
     'star': '⭐',
-    'fairy': '🧚‍♀️'
+    'fairy': '🧚‍♀️',
+    'snail': '🐌',
+    'ladybug': '🐞',
+    'car': '🚗',
+    'flower': '🌸',
+    'hat': '🎩',
+    'lion': '🦁',
+    'cat': '🐱'
   };
   return items[id as keyof typeof items] || '';
 };
@@ -97,7 +105,14 @@ const getEmojiById = (id: string): string => {
 const getNameById = (id: string): string => {
   const items = {
     'star': 'Étoile',
-    'fairy': 'Fée'
+    'fairy': 'Fée',
+    'snail': 'Escargot',
+    'ladybug': 'Coccinelle',
+    'car': 'Voiture',
+    'flower': 'Fleur',
+    'hat': 'Chapeau',
+    'lion': 'Lion',
+    'cat': 'Chat'
   };
   return items[id as keyof typeof items] || '';
 };

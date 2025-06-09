@@ -36,6 +36,13 @@
   align-items: center;
 }
 
+.items-container.free-mode {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  justify-items: center;
+}
+
 .item-slot {
   display: flex;
   align-items: center;
@@ -46,6 +53,11 @@
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
+}
+
+.free-mode .item-slot {
+  min-height: 50px;
+  width: 90px;
 }
 
 .item-slot.empty {

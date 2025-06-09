@@ -6,6 +6,7 @@ const levels = [
   { id: "easy", label: "Niveau Facile", className: "easy" },
   { id: "medium", label: "Niveau Moyen", className: "medium" },
   { id: "hard", label: "Niveau Difficile", className: "hard" },
+  { id: "free", label: "Mode Libre", className: "free" },
 ];
 
 const Home: React.FC = () => {

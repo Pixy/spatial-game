@@ -60,3 +60,7 @@
 .level-button.hard {
   background: #f44336;
 }
+
+.level-button.free {
+  background: #9c27b0;
+}
