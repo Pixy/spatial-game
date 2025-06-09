@@ -1,10 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import { GameGrid, SidePanel } from '../components/Game';
 import { Button, Message } from '../components/UI';
 import '../styles/Gameplay.css';
+import '../styles/Toast.css';
+import { getHappyAnimals, getPersonalizedHappinessMessage } from '../utils/animalHappiness';
 
 interface GameItem {
   id: string;
@@ -49,6 +52,35 @@ const Gameplay: React.FC = () => {
   const [availableItems, setAvailableItems] = useState<GameItem[]>(gameItems);
   const [placedItems, setPlacedItems] = useState<PlacedItem[]>([]);
   const [message, setMessage] = useState<string>('');
+  const [lastHappinessMessage, setLastHappinessMessage] = useState<string>('');
+
+  // Effect pour calculer et afficher les messages de bonheur en mode libre
+  useEffect(() => {
+    if (level === 'free' && placedItems.length > 0) {
+      const gridSize = 5;
+      const happyAnimals = getHappyAnimals(placedItems, gridSize);
+      
+      if (happyAnimals.size > 0) {
+        const happinessMessage = getPersonalizedHappinessMessage(placedItems, happyAnimals);
+        
+        // Éviter les doublons de messages
+        if (happinessMessage !== lastHappinessMessage) {
+          setLastHappinessMessage(happinessMessage);
+          
+          // Afficher le toast de bonheur
+          toast(happinessMessage, {
+            duration: 3000,
+            position: 'top-center',
+            className: 'happiness-toast',
+            icon: '🎉',
+          });
+        }
+      } else {
+        // Reset si plus d'animaux contents
+        setLastHappinessMessage('');
+      }
+    }
+  }, [placedItems, level, lastHappinessMessage]);
 
   const checkWinCondition = useCallback(() => {
     // En mode libre, pas de conditions de victoire spécifiques
@@ -176,7 +208,7 @@ const Gameplay: React.FC = () => {
           }
         </p>
         
-        {message && (
+        {message && !message.includes('🎉') && (
           <Message type={isGameWon ? 'success' : 'encouraging'}>
             {message}
           </Message>
@@ -208,6 +240,15 @@ const Gameplay: React.FC = () => {
           </Button>
         </div>
       </div>
+      
+      {/* Toaster pour les messages de bonheur */}
+      <Toaster 
+        position="top-center"
+        toastOptions={{
+          className: 'happiness-toast',
+          duration: 3000,
+        }}
+      />
     </DndProvider>
   );
 };

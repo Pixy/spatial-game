@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/GameGrid.css';
+import { getHappyAnimals } from '../../utils/animalHappiness';
 import GridCell from './GridCell';
 
 interface PlacedItem {
@@ -33,6 +34,9 @@ const GameGrid: React.FC<GameGridProps> = ({
     { row: 1, col: 1, emoji: '🌳', id: 'tree' }
   ] : [];
 
+  // Calculer quels animaux sont contents
+  const happyAnimals = getHappyAnimals(placedItems, gridSize);
+
   const renderGrid = () => {
     const grid = [];
     for (let row = 0; row < gridSize; row++) {
@@ -46,6 +50,7 @@ const GameGrid: React.FC<GameGridProps> = ({
             onDrop={onDrop}
             onRemove={onRemove}
             fixedItems={fixedItems}
+            happyAnimals={happyAnimals}
           />
         );
       }

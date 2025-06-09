@@ -65,6 +65,48 @@
   border: 2px solid #ff9800;
 }
 
+/* Animations spéciales pour les messages de bonheur des animaux */
+.happiness-message {
+  background: linear-gradient(135deg, #fff9c4 0%, #f8bbd9 50%, #e1bee7 100%);
+  border: 2px solid #ffd700;
+  animation: happiness-pulse 0.6s ease-in-out;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes happiness-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Effet spécial pour les messages avec des emojis d'animaux */
+.happiness-message:has-text("🐱"),
+.happiness-message:has-text("🦁"),
+.happiness-message:has-text("🧚‍♀️"),
+.happiness-message:has-text("🐌"),
+.happiness-message:has-text("🐞") {
+  background: linear-gradient(45deg, #e8f5e8, #fff3e0, #f3e5f5);
+  animation: happiness-pulse 0.6s ease-in-out, rainbow-border 3s linear infinite;
+}
+
+@keyframes rainbow-border {
+  0% { border-color: #ff6b6b; }
+  16% { border-color: #feca57; }
+  33% { border-color: #48dbfb; }
+  50% { border-color: #0abde3; }
+  66% { border-color: #ff9ff3; }
+  83% { border-color: #54a0ff; }
+  100% { border-color: #ff6b6b; }
+}
+
 .gameplay-buttons {
   display: flex;
   gap: 15px;
