@@ -17,5 +17,12 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false
-  }
+  },
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/__tests__/**/*",
+    "test/**/*",
+    "node_modules",
+    "dist"
+  ]
 }
